@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://cf18fa3e1xw27"]
+
+[ext_resource type="Script" uid="uid://dgkruegyoint7" path="res://scripts/killzone.gd" id="1_xlapc"]
+[ext_resource type="AudioStream" uid="uid://cvljxr6an0yqs" path="res://assets/sounds/explosion.wav" id="2_kl8fp"]
+[ext_resource type="Shader" uid="uid://gfp4b1b0ccbs" path="res://Mask.gdshader" id="3_yemdv"]
+[ext_resource type="Texture2D" uid="uid://cjpovpk8evcxf" path="res://assets/sprites/cuore.png" id="4_yemdv"]
+[ext_resource type="Script" uid="uid://cvu8xghk12pi4" path="res://MaskCode.gd" id="5_hxs5g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ni0ed"]
+shader = ExtResource("3_yemdv")
+shader_parameter/mask_texture = ExtResource("4_yemdv")
+shader_parameter/zoom = 2.0
+shader_parameter/strength = 1.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="Killzone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_xlapc")
+
+[node name="morte" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_kl8fp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_ni0ed")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_hxs5g")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,151 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmoo1oac88gna"]
+
+[ext_resource type="Script" uid="uid://do8qo70r4vc4o" path="res://scripts/ShopScene.gd" id="1_i5axx"]
+
+[node name="ShopScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i5axx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.05, 0.12, 1)
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="TopBarHBox" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ShopTitle" type="Label" parent="UI/TopBar/TopBarHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.78, 0.26, 1)
+theme_override_font_sizes/font_size = 22
+text = "⚔  MERCHANT'S SHOP"
+
+[node name="GoldIcon" type="Label" parent="UI/TopBar/TopBarHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "🪙"
+
+[node name="GoldLabel" type="Label" parent="UI/TopBar/TopBarHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.78, 0.26, 1)
+theme_override_font_sizes/font_size = 18
+text = "⬤ 500"
+
+[node name="BackButton" type="Button" parent="UI/TopBar/TopBarHBox"]
+layout_mode = 2
+text = "\"← Indietro\""
+
+[node name="FilterBar" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Divider" type="HSeparator" parent="UI"]
+layout_mode = 2
+
+[node name="Body" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Left" type="PanelContainer" parent="UI/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Body/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemGrid" type="GridContainer" parent="UI/Body/Left/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Right" type="PanelContainer" parent="UI/Body"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="DetailPanel" type="VBoxContainer" parent="UI/Body/Right"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RarityLabel" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
+theme_override_font_sizes/font_size = 11
+text = "COMMON"
+
+[node name="ItemName" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Item Name"
+
+[node name="TypeLabel" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7, 0.7, 0.85, 1)
+theme_override_font_sizes/font_size = 12
+text = "[Weapon]"
+
+[node name="ItemDesc" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+
+[node name="DetailDivider" type="HSeparator" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+
+[node name="ItemStat" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.27, 0.9, 0.5, 1)
+theme_override_font_sizes/font_size = 16
+
+[node name="Spacer" type="Control" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemPrice" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.78, 0.26, 1)
+theme_override_font_sizes/font_size = 22
+text = "⬤ 120"
+
+[node name="BuyButton" type="Button" parent="UI/Body/Right/DetailPanel"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "BUY"
+
+[node name="NotificationAnim" type="PanelContainer" parent="UI"]
+layout_mode = 2
+
+[node name="NotifLabel" type="Label" parent="UI/NotificationAnim"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Purchased!"
+horizontal_alignment = 1
+vertical_alignment = 1

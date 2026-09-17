@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cfbhvywoalpbp"]
+
+[ext_resource type="Shader" uid="uid://gfp4b1b0ccbs" path="res://Mask.gdshader" id="1_37rai"]
+[ext_resource type="Texture2D" uid="uid://dwpb3223xhpqp" path="res://assets/sprites/gomitolo.png" id="2_0qrqu"]
+[ext_resource type="Script" uid="uid://cvu8xghk12pi4" path="res://MaskCode.gd" id="3_mx0kw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w4oxd"]
+shader = ExtResource("1_37rai")
+shader_parameter/mask_texture = ExtResource("2_0qrqu")
+shader_parameter/zoom = 0.250000011875
+shader_parameter/strength = 0.0
+shader_parameter/center = Vector2(0.6, 0.5)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_w4oxd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_mx0kw")

@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqmr4g8ay8xnr"]
+
+[ext_resource type="Texture2D" uid="uid://48suqsv8iix2" path="res://assets/sprites/world_tileset.png" id="1_3yss6"]
+[ext_resource type="Script" uid="uid://bcj7eqwncmd1t" path="res://scenes/blocco_interrogativo.gd" id="1_ttoc0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoc0"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ydsg"]
+atlas = ExtResource("1_3yss6")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6e1d6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ydsg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="blocco interrogativo" type="Area2D"]
+collision_mask = 7
+script = ExtResource("1_ttoc0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 2)
+shape = SubResource("RectangleShape2D_ttoc0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2, 2)
+sprite_frames = SubResource("SpriteFrames_6e1d6")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

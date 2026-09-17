@@ -1,0 +1,196 @@
+[gd_scene load_steps=19 format=3 uid="uid://djm35411v03gt"]
+
+[ext_resource type="Script" uid="uid://6d7apsjuai5t" path="res://scripts/MainMenu.gd" id="1_5faoh"]
+[ext_resource type="Texture2D" uid="uid://cwamm3syl2851" path="res://assets/sprites/immagine.png" id="1_bky6r"]
+[ext_resource type="Texture2D" uid="uid://cjpovpk8evcxf" path="res://assets/sprites/cuore.png" id="2_l4mxc"]
+[ext_resource type="Texture2D" uid="uid://csokntac7drjm" path="res://assets/sprites/cat1.png" id="4_2nypq"]
+[ext_resource type="Texture2D" uid="uid://gaylldtdip0u" path="res://assets/sprites/playbutton.png" id="5_play"]
+[ext_resource type="Texture2D" uid="uid://c7a0xcwu7btgt" path="res://assets/sprites/impostazionebutton.png" id="5_settings"]
+[ext_resource type="Texture2D" uid="uid://5qkukl8qnm7b" path="res://assets/sprites/inventorybutton.png" id="8_inv"]
+[ext_resource type="Texture2D" uid="uid://c1ky1sg12pw8o" path="res://assets/sprites/shopbutton.png" id="9_shop"]
+[ext_resource type="Texture2D" uid="uid://ca3dns8q6brco" path="res://assets/sprites/skinbutton.png" id="10_skin"]
+[ext_resource type="Texture2D" uid="uid://drd0nnks7otk2" path="res://assets/sprites/exitbutton.png" id="11_exit"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_play"]
+texture = ExtResource("5_play")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7la6k"]
+atlas = ExtResource("4_2nypq")
+region = Rect2(0, 0, 4, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cat"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7la6k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_inv"]
+texture = ExtResource("8_inv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_shop"]
+texture = ExtResource("9_shop")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_skin"]
+texture = ExtResource("10_skin")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_settings"]
+texture = ExtResource("5_settings")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_exit"]
+texture = ExtResource("11_exit")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5faoh")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_bky6r")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="CenterContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 130
+
+[node name="MainVBox" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="CatMascot" type="TextureRect" parent="CenterContainer/MainVBox"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+size_flags_horizontal = 4
+texture = ExtResource("2_l4mxc")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="CenterContainer/MainVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_play")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_play")
+theme_override_styles/hover = SubResource("StyleBoxTexture_play")
+theme_override_styles/focus = SubResource("StyleBoxTexture_play")
+
+[node name="CatPlay" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/PlayButton"]
+visible = false
+position = Vector2(-12, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+
+[node name="InventoryButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_inv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_inv")
+theme_override_styles/hover = SubResource("StyleBoxTexture_inv")
+theme_override_styles/focus = SubResource("StyleBoxTexture_inv")
+
+[node name="CatInventory" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/InventoryButton"]
+visible = false
+position = Vector2(-12, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+
+[node name="ShopButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_shop")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_shop")
+theme_override_styles/hover = SubResource("StyleBoxTexture_shop")
+theme_override_styles/focus = SubResource("StyleBoxTexture_shop")
+
+[node name="CatShop" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/ShopButton"]
+visible = false
+position = Vector2(-12, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+
+[node name="SkinButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_skin")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_skin")
+theme_override_styles/hover = SubResource("StyleBoxTexture_skin")
+theme_override_styles/focus = SubResource("StyleBoxTexture_skin")
+
+[node name="CatSkin" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/SkinButton"]
+visible = false
+position = Vector2(-12, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+
+[node name="BottomRow" type="HBoxContainer" parent="CenterContainer/MainVBox/ButtonsVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="SettingsButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox/BottomRow"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_settings")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_settings")
+theme_override_styles/hover = SubResource("StyleBoxTexture_settings")
+theme_override_styles/focus = SubResource("StyleBoxTexture_settings")
+
+[node name="CatSettings" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/BottomRow/SettingsButton"]
+visible = false
+position = Vector2(-12, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+
+[node name="ExitButton" type="Button" parent="CenterContainer/MainVBox/ButtonsVBox/BottomRow"]
+custom_minimum_size = Vector2(185, 75)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_exit")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_exit")
+theme_override_styles/hover = SubResource("StyleBoxTexture_exit")
+theme_override_styles/focus = SubResource("StyleBoxTexture_exit")
+
+[node name="CatExit" type="AnimatedSprite2D" parent="CenterContainer/MainVBox/ButtonsVBox/BottomRow/ExitButton"]
+visible = false
+position = Vector2(197, 32)
+scale = Vector2(7, 7)
+sprite_frames = SubResource("SpriteFrames_cat")
+autoplay = "default"
+flip_h = true

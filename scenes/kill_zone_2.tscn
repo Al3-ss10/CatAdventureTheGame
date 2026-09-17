@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxu5vlv768rdu"]
+
+[ext_resource type="Script" uid="uid://bi0lah6py2m05" path="res://scripts/kill_zone_2.gd" id="1_jpmmv"]
+[ext_resource type="Shader" uid="uid://gfp4b1b0ccbs" path="res://Mask.gdshader" id="2_bhsnr"]
+[ext_resource type="Texture2D" uid="uid://cjpovpk8evcxf" path="res://assets/sprites/cuore.png" id="3_0ccmj"]
+[ext_resource type="Script" uid="uid://cvu8xghk12pi4" path="res://MaskCode.gd" id="4_8gdqd"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hyk5w"]
+shader = ExtResource("2_bhsnr")
+shader_parameter/mask_texture = ExtResource("3_0ccmj")
+shader_parameter/zoom = 2.0
+shader_parameter/strength = 1.0
+shader_parameter/center = Vector2(0.5, 0.5)
+
+[node name="killZone2" type="Area2D"]
+script = ExtResource("1_jpmmv")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_hyk5w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_8gdqd")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

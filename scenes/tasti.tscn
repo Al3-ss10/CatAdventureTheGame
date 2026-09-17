@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dol5pxnhetjse"]
+
+[ext_resource type="Texture2D" uid="uid://brm5cjoj45gof" path="res://assets/sprites/f dx.png" id="1_oxhee"]
+[ext_resource type="Texture2D" uid="uid://d32sis2yoy4mt" path="res://assets/sprites/f sx.png" id="2_p6ndr"]
+[ext_resource type="Texture2D" uid="uid://c4tm42sab00yw" path="res://assets/sprites/f up.png" id="3_p6ndr"]
+[ext_resource type="Texture2D" uid="uid://b146hjh5pogfu" path="res://assets/sprites/box 3.png" id="4_4af2g"]
+[ext_resource type="Texture2D" uid="uid://dwpb3223xhpqp" path="res://assets/sprites/gomitolo.png" id="5_eyh0i"]
+
+[node name="Tasti" type="CanvasLayer"]
+
+[node name="DX" type="TouchScreenButton" parent="."]
+position = Vector2(200, 508)
+scale = Vector2(8.521, 5.375)
+texture_normal = ExtResource("1_oxhee")
+action = "move_right"
+
+[node name="SX" type="TouchScreenButton" parent="."]
+position = Vector2(50, 508)
+scale = Vector2(8.5215, 5.3749995)
+texture_normal = ExtResource("2_p6ndr")
+action = "move_left"
+
+[node name="salto" type="TouchScreenButton" parent="."]
+position = Vector2(861, 380)
+scale = Vector2(5.375, 8.521)
+texture_normal = ExtResource("3_p6ndr")
+action = "jump"
+
+[node name="Box" type="TouchScreenButton" parent="."]
+position = Vector2(1001.9999, 405.00003)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("4_4af2g")
+action = "Box"
+
+[node name="Gomitolo" type="TouchScreenButton" parent="."]
+position = Vector2(909.99994, 517)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("5_eyh0i")
+action = "Sparare"

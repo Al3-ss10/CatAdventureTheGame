@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0m3ss4geb0x1"]
+
+[ext_resource type="Script" uid="uid://db268tf2sbihf" path="res://scripts/message_box.gd" id="1_7dwdg"]
+[ext_resource type="Script" uid="uid://dhocrequf3qei" path="res://scripts/trigger.gd" id="2_bi8wi"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0gpv"]
+radius = 102.70345
+
+[node name="MessageBox" type="CanvasLayer"]
+script = ExtResource("1_7dwdg")
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -140.0
+offset_right = 300.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 16
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 7
+script = ExtResource("2_bi8wi")
+
+[node name="ShapeTrigger" type="CollisionShape2D" parent="trigger"]
+shape = SubResource("CircleShape2D_c0gpv")

@@ -1,0 +1,205 @@
+[gd_scene load_steps=4 format=3 uid="uid://2l2dpq27utts"]
+
+[ext_resource type="Script" uid="uid://bksnw8tcn8c7j" path="res://scripts/InventoryScene.gd" id="1_ew0w2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.18, 0.12, 0.1, 0.8)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.28, 0.16, 0.12, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.51, 0.16, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="InventoryScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ew0w2")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.07, 0.05, 0.12, 1)
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="PanelContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 56)
+layout_mode = 2
+
+[node name="TopBarHBox" type="HBoxContainer" parent="UI/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="UI/TopBar/TopBarHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.7, 0.2, 1)
+theme_override_colors/font_shadow_color = Color(0.8, 0, 0, 0.6)
+theme_override_colors/font_outline_color = Color(1, 0.15, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 22
+text = "CAT ADVENTURE - INVENTARIO"
+
+[node name="BackButton" type="Button" parent="UI/TopBar/TopBarHBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.7, 1)
+theme_override_colors/font_focus_color = Color(1, 0.51, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.12, 0.04, 1)
+theme_override_colors/font_hover_color = Color(1, 0.51, 0.16, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "← HOME"
+
+[node name="FilterBar" type="HBoxContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Divider" type="HSeparator" parent="UI"]
+layout_mode = 2
+
+[node name="Body" type="HBoxContainer" parent="UI"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Left" type="PanelContainer" parent="UI/Body"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/Body/Left"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ItemGrid" type="GridContainer" parent="UI/Body/Left/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 3
+
+[node name="Right" type="PanelContainer" parent="UI/Body"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+
+[node name="DetailPanel" type="VBoxContainer" parent="UI/Body/Right"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RarityLabel" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.62, 0.62, 1)
+theme_override_font_sizes/font_size = 11
+text = "COMMON"
+
+[node name="ItemName" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.51, 0.16, 1)
+theme_override_font_sizes/font_size = 20
+text = "Item Name"
+
+[node name="TypeLabel" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.7, 1)
+theme_override_font_sizes/font_size = 12
+text = "[Weapon]"
+
+[node name="DetailDivider" type="HSeparator" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+
+[node name="ItemDesc" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.7, 1)
+theme_override_font_sizes/font_size = 13
+text = "Description here."
+autowrap_mode = 3
+
+[node name="ItemStat" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.51, 0.16, 1)
+theme_override_font_sizes/font_size = 16
+text = "+15 ATK"
+
+[node name="QuantityLabel" type="Label" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_font_sizes/font_size = 14
+text = "Quantity: 1"
+
+[node name="Spacer" type="Control" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Buttons" type="VBoxContainer" parent="UI/Body/Right/DetailPanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquipButton" type="Button" parent="UI/Body/Right/DetailPanel/Buttons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.7, 1)
+theme_override_colors/font_focus_color = Color(1, 0.51, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.12, 0.04, 1)
+theme_override_colors/font_hover_color = Color(1, 0.51, 0.16, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "EQUIP"
+
+[node name="UseButton" type="Button" parent="UI/Body/Right/DetailPanel/Buttons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.85, 0.7, 1)
+theme_override_colors/font_focus_color = Color(1, 0.51, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.12, 0.04, 1)
+theme_override_colors/font_hover_color = Color(1, 0.51, 0.16, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "USE"
+
+[node name="DropButton" type="Button" parent="UI/Body/Right/DetailPanel/Buttons"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.35, 0.35, 1)
+theme_override_colors/font_focus_color = Color(1, 0.51, 0.16, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.12, 0.04, 1)
+theme_override_colors/font_hover_color = Color(1, 0.51, 0.16, 1)
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxFlat_btn_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_hover")
+theme_override_styles/hover = SubResource("StyleBoxFlat_btn_hover")
+text = "DROP"

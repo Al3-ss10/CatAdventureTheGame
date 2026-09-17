@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://plj8i3lo5r5b"]
+
+[ext_resource type="Script" uid="uid://b4p280gu4ntcp" path="res://scripts/magnete.gd" id="1_o5pgs"]
+[ext_resource type="Texture2D" uid="uid://cksas4opkt8e3" path="res://assets/sprites/Magnete.png" id="2_fhtio"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k0inc"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f43ql"]
+atlas = ExtResource("2_fhtio")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_avjli"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f43ql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="magnete" type="Area2D" groups=["PowerUp"]]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_o5pgs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_k0inc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_avjli")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

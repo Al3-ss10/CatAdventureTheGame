@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=3 uid="uid://cpowxvf2jsfny"]
+
+[ext_resource type="Script" uid="uid://dvr2khykjkjv5" path="res://scripts/proietile_gomitolo.gd" id="1_1rmut"]
+[ext_resource type="Texture2D" uid="uid://dwpb3223xhpqp" path="res://assets/sprites/gomitolo.png" id="1_f0vlr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rmut"]
+radius = 6.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8b0s7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_f0vlr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ProietileGomitolo" type="Area2D" groups=["Test"]]
+light_mask = 8
+visibility_layer = 8
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_1rmut")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1rmut")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.5, 0.49999994)
+sprite_frames = SubResource("SpriteFrames_8b0s7")
+
+[node name="rx" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+collision_mask = 9
+
+[node name="down" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)
+
+[node name="up" type="RayCast2D" parent="."]
+target_position = Vector2(0, -8)
+
+[node name="lx" type="RayCast2D" parent="."]
+target_position = Vector2(-8, 0)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

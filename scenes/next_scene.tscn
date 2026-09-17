@@ -1,0 +1,12 @@
+[gd_scene format=3]
+
+[node name="NextScene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 700.0
+offset_bottom = 350.0
+text = "Sei nella scena successiva!"
+horizontal_alignment = 1
+theme_override_font_sizes/font_size = 28

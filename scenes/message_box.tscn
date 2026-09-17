@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0m3ss4geb0x1"]
+
+[ext_resource type="Script" uid="uid://db268tf2sbihf" path="res://scripts/message_box.gd" id="1_7dwdg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c0gpv"]
+radius = 44.04543
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.18, 0.12, 0.1, 0.95)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.51, 0.16, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="MessageBox" type="Node2D"]
+script = ExtResource("1_7dwdg")
+
+[node name="trigger" type="Area2D" parent="."]
+collision_layer = 6
+collision_mask = 7
+
+[node name="ShapeTrigger" type="CollisionShape2D" parent="trigger"]
+shape = SubResource("CircleShape2D_c0gpv")
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="Panel" type="PanelContainer" parent="UILayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -180.0
+offset_right = 300.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="Margin" type="MarginContainer" parent="UILayer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UILayer/Panel/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 0.85, 0.7, 1)
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

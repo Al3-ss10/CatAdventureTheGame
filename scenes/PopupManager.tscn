@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkoq6kmbdy0c5"]
+
+[ext_resource type="Script" uid="uid://6k7hma8j38np" path="res://scripts/PopupManager.gd" id="1_nm1pp"]
+
+[sub_resource type="Animation" id="Animation_popup_in"]
+resource_name = "popup_in"
+length = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Popup:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Popup:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_popup_out"]
+resource_name = "popup_out"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Popup:modulate:a")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Popup:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_main"]
+_data = {
+&"popup_in": SubResource("Animation_popup_in"),
+&"popup_out": SubResource("Animation_popup_out")
+}
+
+[node name="PopupManager" type="CanvasLayer"]
+script = ExtResource("1_nm1pp")
+
+[node name="Popup" type="Panel" parent="."]
+offset_left = 376.0
+offset_top = 274.0
+offset_right = 776.0
+offset_bottom = 374.0
+
+[node name="PopupLabel" type="Label" parent="Popup"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 380.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 24
+text = "Hai sbloccato \"oggetto\""
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Popup"]
+libraries = {
+&"": SubResource("AnimationLibrary_main")
+}
